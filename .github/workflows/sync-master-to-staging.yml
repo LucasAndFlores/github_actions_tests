@@ -1,0 +1,25 @@
+name: Sync master -> staging
+on:
+  pull_request:
+    types:
+      - opened
+
+    branches:
+      - main
+
+jobs:
+  sync-master-to-staging:
+    runs-on: ubuntu-latest
+    name: Syncing branches
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: master
+
+      - name: Opening pull request
+        id: pull
+        uses: tretuna/sync-branches@1.4.0
+        with:
+          GITHUB_TOKEN: ${{secrets.TOKEN}}
+          FROM_BRANCH: "master"
+          TO_BRANCH: "staging"
