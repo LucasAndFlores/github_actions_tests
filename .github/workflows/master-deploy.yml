@@ -1,0 +1,11 @@
+name: Master deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  simulate-deploy-master:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy
+        run: echo deploy finished on master
