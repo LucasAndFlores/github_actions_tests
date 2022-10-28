@@ -1,14 +1,14 @@
-name: Sync master -> staging
+name: Sync staging -> dev
 on:
   pull_request:
     types:
       - closed
 
     branches:
-      - master
+      - staging
 
 jobs:
-  sync-master-to-staging:
+  sync-staging-to-staging:
     if: github.event.pull_request.merged
     runs-on: ubuntu-latest
     name: Syncing branches
@@ -24,5 +24,5 @@ jobs:
         uses: tretuna/sync-branches@1.4.0
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          FROM_BRANCH: "master"
-          TO_BRANCH: "staging"
+          FROM_BRANCH: "staging"
+          TO_BRANCH: "dev"
