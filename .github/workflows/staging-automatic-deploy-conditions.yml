@@ -9,7 +9,7 @@ on:
 
 jobs:
   simulate-deploy-staging-auto:
-    if: ${{contains(fromJson('["downmerge", "upmerge"]'), github.event.label.name) && github.event.pull_request.merged}}
+    if: ${{ github.event.pull_request.merged && contains(fromJson('["downmerge", "upmerge"]'), github.event.label.name)}}
     runs-on: ubuntu-latest
     steps:
       - name: deploy
