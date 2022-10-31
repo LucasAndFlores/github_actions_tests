@@ -9,7 +9,7 @@ on:
 
 jobs:
   sync-staging-to-staging:
-    if: github.event.pull_request.merged && github.event.label.name == 'downmerge'
+    if: github.event.label.name == 'downmerge'
     runs-on: ubuntu-latest
     name: Syncing branches
     steps:
