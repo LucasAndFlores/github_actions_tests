@@ -3,6 +3,6 @@ const config = {
   property: "yes",
   logs: true,
   testAgain: true,
-  usingUpMerge: "sure",
+  usingUpMerge: "sure aaaaa",
   hotFix: true,
 };
