@@ -4,4 +4,5 @@ const config = {
   logs: true,
   testAgain: true,
   usingUpMerge: "sure",
+  hotFix: true,
 };
