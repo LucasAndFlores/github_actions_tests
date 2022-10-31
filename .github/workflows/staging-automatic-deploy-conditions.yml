@@ -1,13 +1,14 @@
 name: Staging deploy automatic labels
 on:
   pull_request:
-    types: ["closed", "labeled"]
+    types: ["labeled"]
+  push:
     branches:
       - staging
 
 jobs:
   simulate-deploy-staging-auto:
-    if: ${{ github.event.pull_request.merged && contains(fromJson('["downmerge", "upmerge"]'), github.event.label.name)}}
+    if: contains(fromJson('["downmerge", "upmerge"]'), github.event.label.name)
     runs-on: ubuntu-latest
     steps:
       - name: deploy
