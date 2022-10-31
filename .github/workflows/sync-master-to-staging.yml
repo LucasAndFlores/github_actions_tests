@@ -2,14 +2,14 @@ name: Sync master -> staging
 on:
   pull_request:
     types:
-      - closed
+      - labeled
 
     branches:
       - master
 
 jobs:
   sync-master-to-staging:
-    if: github.event.pull_request.merged
+    if: github.event.label.name == 'downmerge'
     runs-on: ubuntu-latest
     name: Syncing branches
     steps:
