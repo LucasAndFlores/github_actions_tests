@@ -1,0 +1,16 @@
+on:
+  workflow_call:
+  pull_request:
+    types:
+      - closed
+
+    branches:
+      - staging
+
+jobs:
+  check-if-merged-and-deploy:
+    if: github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy staging
+        uses: ./.github/workflows/staging-deploy.yml
