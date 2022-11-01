@@ -1,8 +1,6 @@
 name: Staging deploy
 on:
-  push:
-    branches:
-      - staging
+  workflow_call:
 jobs:
   simulate-deploy-staging:
     runs-on: ubuntu-latest
@@ -15,5 +13,3 @@ jobs:
         run: |
           echo '${{ toJSON(github.event) }}' 
           echo '${{ toJSON(github) }}'
-          echo '${{ github.event.pull_request.merged }}'
-          echo  ${{ github.event.pull_request.merged }}
