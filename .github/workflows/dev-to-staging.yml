@@ -35,4 +35,4 @@ jobs:
     runs-on: ubuntu-latest
     needs: dev-to-staging
     steps:
-      - uses: LucasAndFlores/github_actions_tests/.github/workflows/staging-deploy.yml
+      - uses: ./.github/workflows/staging-deploy.yml@staging
