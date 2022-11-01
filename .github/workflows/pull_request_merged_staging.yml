@@ -1,5 +1,4 @@
 on:
-  workflow_run:
   pull_request:
     types:
       - closed
