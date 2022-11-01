@@ -29,3 +29,10 @@ jobs:
           branch: dev
           title: Dev -> Staging
           body: "review this please"
+
+  simulate-deploy:
+    if: github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    needs: dev-to-staging
+    steps:
+      - uses: LucasAndFlores/github_actions_tests/.github/workflows/staging-deploy.yml
