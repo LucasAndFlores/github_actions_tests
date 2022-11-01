@@ -32,4 +32,4 @@ jobs:
 
   simulate-deploy:
     needs: dev-to-staging
-    uses: ./.github/workflows/staging-deploy.yml
+    uses: ./.github/workflows/pull_request_merged_staging.yml
