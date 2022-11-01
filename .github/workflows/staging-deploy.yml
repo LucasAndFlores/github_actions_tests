@@ -9,3 +9,9 @@ jobs:
     steps:
       - name: deploy
         run: echo deploy finished
+
+      - name: Testing bash
+        id: shouldDeploy
+        run: |
+          echo '${{ toJSON(github.event) }}' 
+          echo '${{ toJSON(github.event.pull_request) }}'
