@@ -30,6 +30,6 @@ jobs:
           title: Dev -> Staging
           body: "review this please"
 
-  simulate-deploy:
-    needs: dev-to-staging
-    uses: ./.github/workflows/pull_request_merged_staging.yml
+  # simulate-deploy:
+  #   needs: dev-to-staging
+  #   uses: ./.github/workflows/pull_request_merged_staging.yml
