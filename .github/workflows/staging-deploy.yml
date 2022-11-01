@@ -14,5 +14,6 @@ jobs:
         id: shouldDeploy
         run: |
           echo '${{ toJSON(github.event) }}' 
-          echo '${{ toJSON(github.event.pull_request.merged) }}'
-          echo  ${{ github.event.pull_request.merged }}
+          echo with json '${{ toJSON(github.event.pull_request.merged) }}'
+          echo test without json '${{ github.event.pull_request.merged }}'
+          echo test without json and string ${{ github.event.pull_request.merged }}
