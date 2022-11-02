@@ -1,6 +1,9 @@
 name: Staging deploy
 on:
-  workflow_call:
+  push:
+    branches:
+      - staging
+  workflow_dispatch:
 jobs:
   simulate-deploy-staging:
     runs-on: ubuntu-latest
