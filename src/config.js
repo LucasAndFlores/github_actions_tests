@@ -5,4 +5,5 @@ const config = {
   testAgain: true,
   usingUpMerge: "sure b",
   hotFix: true,
+  direct: true,
 };
