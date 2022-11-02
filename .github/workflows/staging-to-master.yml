@@ -43,4 +43,4 @@ jobs:
           edit-mode: replace
 
       - name: Echo CPR
-        run: echo ${{toJSON(steps.cpr)}}
+        run: echo ${{ toJSON(steps.cpr) }}
