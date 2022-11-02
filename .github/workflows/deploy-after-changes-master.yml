@@ -1,0 +1,12 @@
+name: Deploy after changes is merged into master
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
+
+jobs:
+  deploy-after-merge-staging:
+    if: github.event.pull_request.merged
+    uses: ./.github/workflows/master-deploy.yml
