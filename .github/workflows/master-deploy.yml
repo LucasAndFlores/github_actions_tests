@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 jobs:
   simulate-deploy-master:
     runs-on: ubuntu-latest
