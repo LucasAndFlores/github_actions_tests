@@ -45,7 +45,7 @@ jobs:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ steps.cpr.outputs.pull-request-number }}
           body: |
-            ${{ env.fetch-api-data }}
+            test yeah
           edit-mode: replace
 
       - name: Echo CPR
