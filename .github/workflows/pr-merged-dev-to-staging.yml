@@ -1,0 +1,12 @@
+name: Deploy after merge into staging
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - staging
+
+jobs:
+  deploy-after-merge-staging:
+    if: github.event.pull_request.merged
+    uses: ./.github/workflows/staging-deploy.yml
