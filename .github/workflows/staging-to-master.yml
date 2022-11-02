@@ -4,7 +4,7 @@ on:
     branches:
       - staging
 jobs:
-  dev-to-staging:
+  staging-to-master:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -23,3 +23,28 @@ jobs:
           branch: staging
           title: Staging -> Production
           body: "review this please to production"
+
+      - name: Get summary of changes
+        if: steps.cpr.outputs.pull-request-number != ''
+        uses: JamesIves/fetch-api-data-action@v2.1.0
+
+      - name: Find comment
+        if: steps.cpr.outputs.pull-request-number != ''
+        uses: peter-evans/find-comment@v1
+        id: fc
+        with:
+          issue-number: ${{ steps.cpr.outputs.pull-request-number }}
+          comment-author: "github-actions[bot]"
+
+      - name: Create or update comment
+        if: steps.cpr.outputs.pull-request-number != ''
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ steps.cpr.outputs.pull-request-number }}
+          body: |
+            ${{ env.fetch-api-data }}
+          edit-mode: replace
+
+      - name: Echo CPR
+        run: echo ${{steps.cpr}}
