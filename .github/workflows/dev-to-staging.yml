@@ -30,6 +30,23 @@ jobs:
           title: Dev -> Staging
           body: "review this please"
 
-  # simulate-deploy:
-  #   needs: dev-to-staging
-  #   uses: ./.github/workflows/pull_request_merged_staging.yml
+      - name: Find comment
+        if: steps.cpr.outputs.pull-request-number != ''
+        uses: peter-evans/find-comment@v1
+        id: fc
+        with:
+          issue-number: ${{ steps.cpr.outputs.pull-request-number }}
+          comment-author: "github-actions[bot]"
+
+      - name: Create or update comment
+        if: steps.cpr.outputs.pull-request-number != ''
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ steps.cpr.outputs.pull-request-number }}
+          body: |
+            test yeah
+          edit-mode: replace
+
+      - name: Echo CPR
+        run: echo '${{ toJSON(steps.cpr) }}'
