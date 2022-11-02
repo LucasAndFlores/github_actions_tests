@@ -30,10 +30,6 @@ jobs:
           title: Dev -> Staging
           body: "review this please"
 
-      - name: Get summary of changes
-        if: steps.cpr.outputs.pull-request-number != ''
-        uses: JamesIves/fetch-api-data-action@v2.1.0
-
       - name: Find comment
         if: steps.cpr.outputs.pull-request-number != ''
         uses: peter-evans/find-comment@v1
