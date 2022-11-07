@@ -1,12 +1,15 @@
 name: Deploy after merge into staging
 on:
-  pull_request:
-    types:
-      - closed
+  push:
     branches:
       - staging
 
 jobs:
   deploy-after-merge-staging:
-    if: github.event.pull_request.merged
-    uses: ./.github/workflows/staging-deploy.yml
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing bash
+        id: shouldDeploy
+        run: |
+          echo '${{ toJSON(github.event) }}' 
+          echo '${{ toJSON(github) }}'
