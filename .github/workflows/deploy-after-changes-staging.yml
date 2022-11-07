@@ -22,3 +22,13 @@ jobs:
         if: github.event.commits[0].commiter.name != 'GitHub'
         run: |
           echo 'Trigger anyway'
+
+      - name: Get summary of changes
+        uses: JamesIves/fetch-api-data-action@v2.1.0
+        with:
+          endpoint: https://helpers.roihunter.com/helpers/releaser/product-images-cache/compare/staging...dev
+          configuration: '{ "method": "GET", "headers": {"Authorization": "${{ secrets.HELPERS_AUTH }}"} }'
+
+      - name: See changes
+        run: |
+          echo '${{ env.fetch-api-data }}'

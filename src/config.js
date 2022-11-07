@@ -1,8 +1,9 @@
 const config = {
-  appName: "test-new",
+  appName: "test-new b",
   property: "yes",
   logs: true,
-  testAgain: true,
-  usingUpMerge: "sure b",
+  testAgain: false,
+  usingUpMerge: "sure d",
   hotFix: true,
+  direct: true,
 };
