@@ -25,6 +25,7 @@ jobs:
 
       - name: Get summary of changes
         uses: JamesIves/fetch-api-data-action@v2.1.0
+        id: summary_changes
         with:
           endpoint: https://helpers.roihunter.com/helpers/releaser/product-images-cache/compare/staging...dev
           configuration: '{ "method": "GET", "headers": {"Authorization": "${{ secrets.HELPERS_AUTH }}"} }'
@@ -32,5 +33,9 @@ jobs:
 
       - name: See changes
         run: |
+          echo ${{ steps.summary_changes }}
+          echo ${{ env.fetch-api-data }}
+          echo ${{ toJSON(env.fetch-api-data) }}
+          echo '${{ steps.summary_changes }}'
           echo '${{ env.fetch-api-data }}'
           echo '${{ toJSON(env.fetch-api-data) }}'
