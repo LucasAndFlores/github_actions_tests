@@ -28,7 +28,9 @@ jobs:
         with:
           endpoint: https://helpers.roihunter.com/helpers/releaser/product-images-cache/compare/staging...dev
           configuration: '{ "method": "GET", "headers": {"Authorization": "${{ secrets.HELPERS_AUTH }}"} }'
+          format: txt
 
       - name: See changes
         run: |
           echo '${{ env.fetch-api-data }}'
+          echo '${{ toJSON(env.fetch-api-data) }}'
