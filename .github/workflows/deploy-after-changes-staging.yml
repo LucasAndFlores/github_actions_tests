@@ -33,7 +33,7 @@ jobs:
 
       - name: See changes
         run: |
-          echo ${steps.summary_changes}
+          echo ${{ steps.summary_changes }}
           echo ${env.fetch-api-data}
           echo ${toJSON(env.fetch-api-data)}
           echo '${{ steps.summary_changes }}'
